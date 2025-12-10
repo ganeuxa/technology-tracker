@@ -1,6 +1,4 @@
 /* src/App.css */
-
-/* Общие настройки */
 .App {
   max-width: 900px;
   margin: 0 auto;
@@ -9,34 +7,26 @@
   color: #333;
 }
 
-/* Шапка приложения */
 .App-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid #eee;
 }
-
 .App-header h1 {
   font-size: 2rem;
   color: #2c3e50;
   margin: 0;
 }
 
-/* Прогресс-хедер */
+/* Прогресс */
 .progress-header {
   background: #f8f9fa;
   padding: 16px;
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   text-align: center;
 }
-
-.progress-header p {
-  margin: 4px 0;
-  font-weight: 500;
-}
-
 .progress-bar {
   height: 12px;
   background: #e9ecef;
@@ -44,11 +34,32 @@
   overflow: hidden;
   margin: 12px 0;
 }
-
 .progress-fill {
   height: 100%;
   background: #28a745;
   transition: width 0.3s ease;
+}
+
+/* Быстрые действия */
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-success { background: #28a745; color: white; }
+.btn-warning { background: #ffc107; color: #212529; }
+.btn-info { background: #17a2b8; color: white; }
+.btn:hover {
+  opacity: 0.9;
 }
 
 /* Список технологий */
@@ -57,5 +68,3 @@
   flex-direction: column;
   gap: 16px;
 }
-
-/* Стили для TechnologyCard находятся в отдельном файле */
