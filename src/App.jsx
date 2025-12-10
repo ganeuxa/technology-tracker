@@ -1,48 +1,22 @@
-// src/App.jsx
 import './App.css';
-import useTechnologies from './hooks/useTechnologies';
-import ProgressBar from './components/ProgressBar';
-import TechnologyCard from './components/TechnologyCard';
-import QuickActions from './components/QuickActions';
+import Navigation from './components/Navigation';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import TechnologyList from './pages/TechnologyList';
+import TechnologyDetail from './pages/TechnologyDetail';
+import AddTechnology from './pages/AddTechnology';
 
 function App() {
-  const {
-    technologies,
-    updateStatus,
-    updateNotes,
-    markAllAsCompleted,
-    resetAllStatuses,
-    progress
-  } = useTechnologies();
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Трекер изучения технологий</h1>
-        <ProgressBar
-          progress={progress}
-          label="Общий прогресс"
-          color="#2196F3"
-          animated={true}
-          height={20}
-        />
-      </header>
-      <main className="App-main">
-        <QuickActions
-          onMarkAllCompleted={markAllAsCompleted}
-          onResetAll={resetAllStatuses}
-          technologies={technologies}
-        />
-        <div className="technologies-grid">
-          {technologies.map(tech => (
-            <TechnologyCard
-              key={tech.id}
-              technology={tech}
-              onStatusChange={updateStatus}
-              onNotesChange={updateNotes}
-            />
-          ))}
-        </div>
+      <Navigation />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/technologies" element={<TechnologyList />} />
+          <Route path="/technology/:techId" element={<TechnologyDetail />} />
+          <Route path="/add-technology" element={<AddTechnology />} />
+        </Routes>
       </main>
     </div>
   );
