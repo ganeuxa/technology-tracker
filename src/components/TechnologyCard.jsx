@@ -1,7 +1,7 @@
-// src/components/TechnologyCard.jsx
 import './TechnologyCard.css';
+import TechnologyNotes from './TechnologyNotes';
 
-function TechnologyCard({ title, description, status, onToggleStatus }) {
+function TechnologyCard({ title, description, status, notes, onToggleStatus, onUpdateNotes }) {
   const getStatusText = (status) => {
     switch (status) {
       case 'completed': return '✅ Изучено';
@@ -25,6 +25,12 @@ function TechnologyCard({ title, description, status, onToggleStatus }) {
       <h3>{title}</h3>
       <p>{description}</p>
       <span className="status-badge">{getStatusText(status)}</span>
+      
+      {/* Заметки */}
+      <TechnologyNotes
+        notes={notes}
+        onNotesChange={onUpdateNotes}
+      />
     </div>
   );
 }

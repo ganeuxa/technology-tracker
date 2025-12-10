@@ -1,4 +1,3 @@
-// src/components/ProgressHeader.jsx
 function ProgressHeader({ technologies }) {
   const total = technologies.length;
   const completed = technologies.filter(t => t.status === 'completed').length;

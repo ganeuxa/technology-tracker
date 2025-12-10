@@ -1,4 +1,3 @@
-// src/components/QuickActions.jsx
 function QuickActions({ onMarkAll, onResetAll, onRandomNext }) {
   return (
     <div className="quick-actions">
