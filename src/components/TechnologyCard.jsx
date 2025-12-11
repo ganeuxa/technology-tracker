@@ -1,39 +1,26 @@
-// src/components/TechnologyCard.jsx
-import './TechnologyCard.css';
-
-function TechnologyCard({ technology, onStatusChange, onNotesChange }) {
-  const { id, title, description, status, notes, category } = technology;
-
-  const getStatusText = (status) => {
-    switch (status) {
-      case 'completed': return '✅ Завершено';
-      case 'in-progress': return '🔄 В процессе';
-      default: return '⏳ Не начато';
-    }
-  };
-
-  const nextStatus = (status) => {
-    if (status === 'not-started') return 'in-progress';
-    if (status === 'in-progress') return 'completed';
-    return 'not-started';
-  };
+function TechnologyCard({ technology }) {
+  const { title, description, category, difficulty, resources } = technology;
 
   return (
-    <div className={`tech-card tech-card--${status}`} onClick={() => onStatusChange(id, nextStatus(status))}>
+    <div className="technology-card">
       <h3>{title}</h3>
       <p>{description}</p>
-      <span className="category-badge">{category}</span>
-      <span className="status-badge">{getStatusText(status)}</span>
-
-      <div className="notes-section">
-        <label>Заметки:</label>
-        <textarea
-          value={notes}
-          onChange={(e) => onNotesChange(id, e.target.value)}
-          placeholder="Добавьте заметку..."
-          rows="2"
-        />
+      <div className="tech-meta">
+        <span className="tech-category">{category}</span>
+        <span className="tech-difficulty">{difficulty}</span>
       </div>
+      {resources && resources.length > 0 && (
+        <div className="tech-resources">
+          <strong>Ресурсы:</strong>
+          <ul>
+            {resources.map((url, idx) => (
+              <li key={idx}>
+                <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
