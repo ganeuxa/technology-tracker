@@ -17,7 +17,9 @@ function useTechnologiesApi() {
           description: 'Библиотека для создания пользовательских интерфейсов',
           category: 'frontend',
           difficulty: 'beginner',
-          resources: ['https://react.dev', 'https://ru.reactjs.org']
+          deadline: '2025-12-31',
+          resources: ['https://react.dev', 'https://ru.reactjs.org'],
+          notes: 'Изучить хуки и компоненты'
         },
         {
           id: 2,
@@ -25,15 +27,9 @@ function useTechnologiesApi() {
           description: 'Среда выполнения JavaScript на сервере',
           category: 'backend',
           difficulty: 'intermediate',
-          resources: ['https://nodejs.org', 'https://nodejs.org/ru/docs/']
-        },
-        {
-          id: 3,
-          title: 'TypeScript',
-          description: 'Типизированное надмножество JavaScript',
-          category: 'language',
-          difficulty: 'intermediate',
-          resources: ['https://www.typescriptlang.org']
+          deadline: '2026-01-31',
+          resources: ['https://nodejs.org', 'https://nodejs.org/ru/docs/'],
+          notes: 'Понять основы работы с сервером'
         }
       ];
       setTechnologies(mockTechnologies);
@@ -56,7 +52,7 @@ function useTechnologiesApi() {
       setTechnologies(prev => [...prev, newTech]);
       return newTech;
     } catch (err) {
-      throw new Error('Не удалось добавить технологию: ${err.message}');
+      throw new Error(`Не удалось добавить технологию: ${err.message}`);
     }
   };
 

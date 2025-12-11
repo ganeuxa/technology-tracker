@@ -1,7 +1,7 @@
 import './App.css';
 import useTechnologiesApi from './hooks/useTechnologiesApi';
-import RoadmapImporter from './components/RoadmapImporter';
-import TechnologyList from './components/TechnologyList';
+import DataImportExport from './components/DataImportExport';
+import TechnologyCard from './components/TechnologyCard';
 
 function App() {
   const { technologies, loading, error, refetch } = useTechnologiesApi();
@@ -22,14 +22,18 @@ function App() {
         <button onClick={refetch} className="refresh-btn">Обновить</button>
       </header>
       {error && (
-        <div className="app-error">
+        <div className="app-error" role="alert">
           <p>{error}</p>
           <button onClick={refetch}>Попробовать снова</button>
         </div>
       )}
       <main className="app-main">
-        <RoadmapImporter />
-        <TechnologyList technologies={technologies} />
+        <DataImportExport />
+        <div className="technologies-grid">
+          {technologies.map(tech => (
+            <TechnologyCard key={tech.id} technology={tech} />
+          ))}
+        </div>
       </main>
     </div>
   );
