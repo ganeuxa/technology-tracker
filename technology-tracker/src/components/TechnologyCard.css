@@ -1,0 +1,87 @@
+.technology-card {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.technology-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.technology-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.technology-card p {
+  margin: 0 0 15px 0;
+  color: #666;
+}
+
+.status-indicator {
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Визуальное различие по статусу */
+.status-not-started {
+  border-left: 5px solid #ff6b6b;
+}
+.status-in-progress {
+  border-left: 5px solid #4ecdc4;
+}
+.status-completed {
+  border-left: 5px solid #45b7d1;
+}
+
+.status-not-started .status-indicator {
+  background-color: #ffebee;
+  color: #c62828;
+}
+.status-in-progress .status-indicator {
+  background-color: #e0f7fa;
+  color: #00796b;
+}
+.status-completed .status-indicator {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Заметки внутри карточки */
+.notes-section {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #eee;
+}
+
+.notes-section label {
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #555;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.notes-section textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95em;
+  resize: vertical;
+}
+
+.notes-stats {
+  font-size: 0.85em;
+  color: #777;
+  margin-top: 4px;
+  text-align: right;
+}

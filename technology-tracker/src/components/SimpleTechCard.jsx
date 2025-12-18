@@ -1,4 +1,4 @@
-import React from 'react';
+// src/components/SimpleTechCard.jsx
 import {
   Card,
   CardContent,
@@ -6,26 +6,26 @@ import {
   Typography,
   Button,
   Chip,
-  Box,
+  Box
 } from '@mui/material';
 
-const getStatusColor = (status) => {
-  switch (status) {
-    case 'completed': return 'success';
-    case 'in-progress': return 'warning';
-    default: return 'default';
-  }
-};
-
-const getStatusText = (status) => {
-  switch (status) {
-    case 'completed': return 'Завершено';
-    case 'in-progress': return 'В процессе';
-    default: return 'Не начато';
-  }
-};
-
 function SimpleTechCard({ technology, onStatusChange }) {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'completed': return 'success';
+      case 'in-progress': return 'warning';
+      default: return 'default';
+    }
+  };
+
+  const getStatusText = (status) => {
+    switch (status) {
+      case 'completed': return 'Завершено';
+      case 'in-progress': return 'В процессе';
+      default: return 'Не начато';
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 345, margin: 2 }}>
       <CardContent>
@@ -37,7 +37,7 @@ function SimpleTechCard({ technology, onStatusChange }) {
         </Typography>
         <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           <Chip
-            label={technology.category}
+            label={technology.category || 'other'}
             variant="outlined"
             size="small"
           />
@@ -61,12 +61,12 @@ function SimpleTechCard({ technology, onStatusChange }) {
         <Button
           size="small"
           variant="outlined"
-          onClick={() =>
-            onStatusChange(
-              technology.id,
-              technology.status === 'in-progress' ? 'not-started' : 'in-progress'
-            )
-          }
+          onClick={() => {
+            const next = technology.status === 'in-progress'
+              ? 'not-started'
+              : 'in-progress';
+            onStatusChange(technology.id, next);
+          }}
         >
           {technology.status === 'in-progress' ? 'Приостановить' : 'Начать'}
         </Button>
